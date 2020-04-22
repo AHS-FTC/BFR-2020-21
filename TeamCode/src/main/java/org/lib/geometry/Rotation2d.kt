@@ -6,7 +6,7 @@ class Rotation2d {
     private val cosAngle: Double
     private val sinAngle: Double
 
-    constructor(x: Double, y: Double) {
+    constructor(x: Double = 1.0, y: Double = 0.0) {
         cosAngle = x
         sinAngle = y
     }
@@ -51,9 +51,9 @@ class Rotation2d {
     fun tan(): Double {
         return if (Math.abs(cosAngle) < kEpsilon) {
             if (sinAngle >= 0.0) {
-                java.lang.Double.POSITIVE_INFINITY
+                Double.POSITIVE_INFINITY
             } else {
-                java.lang.Double.NEGATIVE_INFINITY
+                Double.NEGATIVE_INFINITY
             }
         } else sinAngle / cosAngle
     }

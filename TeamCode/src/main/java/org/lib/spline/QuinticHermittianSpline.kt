@@ -1,3 +1,5 @@
 package org.lib.spline
 
-class QuinticHermittianSpline
+class QuinticHermittianSpline() {
+
+}
