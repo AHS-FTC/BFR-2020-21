@@ -24,14 +24,6 @@ class Rotation2d {
         return Math.toDegrees(getRadians())
     }
 
-    fun fromRadians(angleRadians: Double): Rotation2d {
-        return Rotation2d(Math.cos(angleRadians), Math.sin(angleRadians))
-    }
-
-    fun fromDegrees(angleDegrees: Double): Rotation2d {
-        return fromRadians(Math.toRadians(angleDegrees))
-    }
-
     fun normal(): Rotation2d {
         return Rotation2d(-sinAngle, cosAngle)
     }
@@ -61,5 +53,16 @@ class Rotation2d {
     fun rotateBy(other: Rotation2d): Rotation2d {
         return Rotation2d(cosAngle * other.cosAngle - sinAngle * other.sinAngle,
                 cosAngle * other.sinAngle + sinAngle * other.cosAngle)
+    }
+
+
+    companion object {
+        fun fromRadians(angleRadians: Double): Rotation2d {
+            return Rotation2d(Math.cos(angleRadians), Math.sin(angleRadians))
+        }
+
+        fun fromDegrees(angleDegrees: Double): Rotation2d {
+            return fromRadians(Math.toRadians(angleDegrees))
+        }
     }
 }
