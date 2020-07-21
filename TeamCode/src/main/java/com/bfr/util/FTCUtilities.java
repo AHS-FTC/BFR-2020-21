@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * General Utilities class to manage the crappy FTC classes
+ * General Utilities class to manage the FTC classes
  * Enables Mocking via the get-InsertHardwareDeviceHere- methods and the testMode boolean
  *
  * @author Alex Appleby
