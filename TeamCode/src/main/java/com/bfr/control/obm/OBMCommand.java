@@ -1,6 +1,7 @@
 package com.bfr.control.obm;
 
-import com.bfr.hardware.sensors.OdometrySystem;
+import com.bfr.control.Position;
+import com.bfr.hardware.sensors.Localizer;
 
 public interface OBMCommand {
 
@@ -16,7 +17,7 @@ public interface OBMCommand {
      *
      * @return boolean where true breaks higher running loop, ending motion.
      */
-    boolean check(OdometrySystem.State robotState);
+    boolean check(Position robotPosition);
 
     void reset();
 

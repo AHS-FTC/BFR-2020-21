@@ -38,8 +38,9 @@ public class Motor {
     }
 
     public void zeroDistance() {
+        DcMotor.RunMode previousRunMode = motor.getMode();
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        motor.setMode(previousRunMode);
     }
 
     public void setZeroPowerBehavior(DcMotor.ZeroPowerBehavior behavior) {

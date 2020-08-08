@@ -23,6 +23,7 @@ import java.util.Map;
  *
  * @author Alex Appleby
  */
+//todo just refactor all of this gross code
 public class FTCUtilities { //handles inaccessable objects in FTCApp. hardwareMap exists under OpMode.
     private static HardwareMap hardwareMap;
     private static OpMode opMode;
@@ -30,9 +31,6 @@ public class FTCUtilities { //handles inaccessable objects in FTCApp. hardwareMa
     private static boolean testMode = false;
     private static Map<String, DcMotor> testMotors = new HashMap();
     private static Map<String, Odometer> testOdometers = new HashMap();
-    private static MockClock mockClock;
-    private static ParameterLookup parameterLookup;
-
 
     public static String getLogDirectory() {
         if (testMode) {
@@ -108,16 +106,8 @@ public class FTCUtilities { //handles inaccessable objects in FTCApp. hardwareMa
         if (!testMode) {
             return System.currentTimeMillis();
         } else {
-            return mockClock.getCurrentTimeMillis();
+            throw new UnsupportedOperationException("Time isn't mocked yet. Do it.");
         }
-    }
-
-    public static ParameterLookup getParameterLookup() {
-        return parameterLookup;
-    }
-
-    public static void setParameterLookup(ParameterLookup parameterLookup) {
-        FTCUtilities.parameterLookup = parameterLookup;
     }
 
     /**
@@ -143,15 +133,11 @@ public class FTCUtilities { //handles inaccessable objects in FTCApp. hardwareMa
         }
     }
 
-    public static void setMockClock(MockClock mockClock) {
-        FTCUtilities.mockClock = mockClock;
-    }
-
     public static void startTestMode() {
         testMode = true;
     }
 
     private FTCUtilities() {
-    } //no constructo statico
+    }
 }
 
