@@ -1,5 +1,9 @@
-package com.bfr.control;
+package com.bfr.util.math;
 
+/**
+ * Standard math vector.
+ * @author Alex Appleby
+ */
 public class Vector {
     public double x, y;
 

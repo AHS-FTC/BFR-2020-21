@@ -2,7 +2,7 @@ package com.bfr.hardware.sensors;
 
 import org.firstinspires.ftc.robotcore.internal.android.dx.util.Warning;
 
-import com.bfr.control.Position;
+import com.bfr.control.path.Position;
 import com.bfr.util.FTCUtilities;
 import com.bfr.util.loggers.Logger;
 import com.bfr.util.loggers.DataLogger;

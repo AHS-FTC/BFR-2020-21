@@ -1,4 +1,7 @@
-package com.bfr.control;
+package com.bfr.control.path;
+
+import com.bfr.util.math.Line;
+import com.bfr.util.math.Point;
 
 import java.util.ArrayList;
 import java.util.List;

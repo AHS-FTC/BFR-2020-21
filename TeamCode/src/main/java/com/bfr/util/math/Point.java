@@ -1,4 +1,6 @@
-package com.bfr.control;
+package com.bfr.util.math;
+
+import com.bfr.control.path.Position;
 
 import java.util.Objects;
 

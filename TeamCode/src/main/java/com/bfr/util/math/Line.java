@@ -1,11 +1,12 @@
-package com.bfr.control;
+package com.bfr.util.math;
+
+import com.bfr.control.path.Position;
 
 import org.firstinspires.ftc.robotcore.internal.android.dx.util.Warning;
 
 /**
  * Line in standard form to be compatible with basic matrix operations.
- * </br>
- * Represents a line in 2d space without falling into the trap of functionality.
+ * Represents a line in 2d space without falling into the trap of functionality, slope, etc.
  * @author Alex Appleby
  */
 public class Line {

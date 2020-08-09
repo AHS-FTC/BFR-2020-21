@@ -1,6 +1,6 @@
 package com.bfr.hardware.sensors;
 
-import com.bfr.control.Position;
+import com.bfr.control.path.Position;
 
 /**
  * Interface containing any system that informs the robot of it's x,y,h position. Can also be used to inject mocks.

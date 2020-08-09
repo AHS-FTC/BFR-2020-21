@@ -1,4 +1,6 @@
-package com.bfr.control;
+package com.bfr.control.path;
+
+import com.bfr.util.math.Point;
 
 /**
  * Represents the position of our robot. x and y coordinates are stored natively in inches.

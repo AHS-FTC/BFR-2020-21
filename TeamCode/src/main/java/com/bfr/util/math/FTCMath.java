@@ -1,4 +1,4 @@
-package com.bfr.util;
+package com.bfr.util.math;
 
 import static java.lang.Math.*;
 
