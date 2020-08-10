@@ -13,7 +13,7 @@ import com.bfr.util.loggers.MockDataLogger;
  *
  * @author Alex Appleby
  */
-public class OdometrySystem implements Localizer { //todo redo all of this grossness
+public class OldOdometrySystem{ //todo redo all of this grossness
     private Position position;
 
     private Odometer xR, xL, y;
@@ -41,7 +41,7 @@ public class OdometrySystem implements Localizer { //todo redo all of this gross
      * @param yInchesPerDegree The amount of displacement given to the y odometer induced by a degree rotation to the robot. Tunable in OdometryCalibrationOpMode
      * //@see edu.ahs.robotics.util.opmodes.OdometryCalibration
      */
-    public OdometrySystem(Odometer xR, Odometer xL, Odometer y, double yInchesPerDegree, double distanceBetweenYWheels) {
+    public OldOdometrySystem(Odometer xR, Odometer xL, Odometer y, double yInchesPerDegree, double distanceBetweenYWheels) {
         this.xR = xR;
         this.xL = xL;
         this.y = y;
@@ -69,7 +69,6 @@ public class OdometrySystem implements Localizer { //todo redo all of this gross
     /**
      * starts thread continuously monitoring position
      */
-    @Override
     public void start() {
         logger.startWriting();
         resetEncoders();
@@ -77,7 +76,6 @@ public class OdometrySystem implements Localizer { //todo redo all of this gross
         logger.startWriting();
     }
 
-    @Override
     public synchronized void stop() {
         odometerThread.end();
         logger.stopWriting();
@@ -137,6 +135,7 @@ public class OdometrySystem implements Localizer { //todo redo all of this gross
         dy = dyBeforeFactorOut - dyExpected;
 
 
+        // https://docs.google.com/drawings/d/1huTcdb1gKbdQXPz-jUMN_eZfvonkwaVhh-DvI5_L7cY/edit?usp=sharing
         if (dHeading != 0) {//courtesy of 11115, thanks gluten free
             double xRadius = dx / dHeading; // arc length - l = theta*r
             double yRadius = dy / dHeading;
