@@ -3,7 +3,7 @@ package com.bfr.util;
 import android.graphics.Bitmap;
 import android.os.Environment;
 
-import com.bfr.hardware.sensors.Odometer;
+import com.bfr.hardware.sensors.OdometerImpl;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -30,7 +30,7 @@ public class FTCUtilities { //handles inaccessable objects in FTCApp. hardwareMa
 
     private static boolean testMode = false;
     private static Map<String, DcMotor> testMotors = new HashMap();
-    private static Map<String, Odometer> testOdometers = new HashMap();
+    private static Map<String, OdometerImpl> testOdometers = new HashMap();
 
     public static String getLogDirectory() {
         if (testMode) {

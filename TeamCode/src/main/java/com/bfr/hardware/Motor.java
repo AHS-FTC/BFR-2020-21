@@ -31,7 +31,7 @@ public class Motor {
     }
 
     public void setPower(double motorPower) {
-        if (motorPower == previousMotorPower) {
+        if (motorPower != previousMotorPower) {
             motor.setPower(Range.clip(motorPower, -1.0, 1.0));
             previousMotorPower = motorPower;
         }

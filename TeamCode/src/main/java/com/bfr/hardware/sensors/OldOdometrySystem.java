@@ -16,7 +16,7 @@ import com.bfr.util.loggers.MockDataLogger;
 public class OldOdometrySystem{ //todo redo all of this grossness
     private Position position;
 
-    private Odometer xR, xL, y;
+    private OdometerImpl xR, xL, y;
 
     private static final int DISTANCE_TIME_BUFFER_SIZE = 10;
     //private RingBuffer<Double> distanceBuffer;
@@ -41,7 +41,7 @@ public class OldOdometrySystem{ //todo redo all of this grossness
      * @param yInchesPerDegree The amount of displacement given to the y odometer induced by a degree rotation to the robot. Tunable in OdometryCalibrationOpMode
      * //@see edu.ahs.robotics.util.opmodes.OdometryCalibration
      */
-    public OldOdometrySystem(Odometer xR, Odometer xL, Odometer y, double yInchesPerDegree, double distanceBetweenYWheels) {
+    public OldOdometrySystem(OdometerImpl xR, OdometerImpl xL, OdometerImpl y, double yInchesPerDegree, double distanceBetweenYWheels) {
         this.xR = xR;
         this.xL = xL;
         this.y = y;
