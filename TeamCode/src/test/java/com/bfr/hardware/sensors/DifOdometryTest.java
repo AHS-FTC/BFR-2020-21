@@ -81,8 +81,8 @@ class DifOdometryTest {
         //drive half a rotation, then do the rest.
         odometry.update();
 
-        //assertEquals(odometry.getPosition().x, 0, 0.0001);
-        //assertEquals(odometry.getPosition().y, -10, 0.0001);
+        assertEquals(odometry.getPosition().x, 0, 0.0001);
+        assertEquals(odometry.getPosition().y, -10, 0.0001);
         assertEquals(odometry.getPosition().heading, -PI, 0.0001);
 
         odometry.update();
