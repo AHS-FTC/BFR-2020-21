@@ -21,11 +21,11 @@ public abstract class Odometry {
         return position;
     }
 
-    abstract void start();
+    public abstract void start();
 
-    abstract void stop();
+    public abstract void stop();
 
-    abstract void update();
+    public abstract void update();
 
     public void setPosition(Position position){
         this.position.copyFrom(position);

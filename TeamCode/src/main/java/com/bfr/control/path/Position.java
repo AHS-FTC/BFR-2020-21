@@ -9,6 +9,8 @@ import com.bfr.util.math.Point;
  * @author Alex and Andrew
  */
 public class Position {
+    public static final Position origin = new Position(0,0,0);
+
     public double x;
     public double y;
 
