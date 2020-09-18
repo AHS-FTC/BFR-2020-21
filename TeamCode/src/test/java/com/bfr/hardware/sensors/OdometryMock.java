@@ -9,17 +9,17 @@ public class OdometryMock extends Odometry {
     }
 
     @Override
-    void start() {
+    public void start() {
 
     }
 
     @Override
-    void stop() {
+    public void stop() {
 
     }
 
     @Override
-    void update() {
+    public void update() {
 
     }
 }

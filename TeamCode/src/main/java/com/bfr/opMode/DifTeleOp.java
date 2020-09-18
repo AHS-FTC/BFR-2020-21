@@ -1,24 +1,54 @@
 package com.bfr.opMode;
 
-import com.bfr.hardware.Motor;
+import com.acmerobotics.dashboard.FtcDashboard;
+import com.bfr.control.path.Position;
+import com.bfr.hardware.WestCoast;
 import com.bfr.util.FTCUtilities;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.util.Range;
+
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 @TeleOp(name="Dif TeleOp", group="Iterative Opmode")
 //@Disabled
 public class DifTeleOp extends OpMode{
-    Motor left, right;
+    WestCoast wc;
 
         @Override
+        @SuppressWarnings("all")
         public void init() {
+
+            DcMotor leftMotor = hardwareMap.get(DcMotor.class,"deviceId");
+            DcMotor rightMotor = hardwareMap.get(DcMotor.class,"deviceId");
+            //BNO055IMU imu = hardwareMap.get(IMU.class, "imu");
+
             FTCUtilities.setOpMode(this);
-            left = new Motor("L", 0,true);
-            right = new Motor("R", 0,true);
+            wc = new WestCoast();
+
+            Telemetry tel = FtcDashboard.getInstance().getTelemetry();
+
+
+//            double turnTarget = 90;
+//            double current = imu.getAngularOrientation().firstAngle;
+//
+//            int direction;
+//            if(current < turnTarget){
+//                direction = 1;
+//            } else {
+//                direction = -1;
+//            }
+//
+//            leftMotor.setPower(direction * 1.0);
+//            rightMotor.setPower(direction * -1.0);
+//
+//            while (Math.abs(imu.getAngularOrientation().firstAngle - turnTarget) < 5.0){
+//                //do nothing
+//            }
+//
+//            leftMotor.setPower(0.0);
+//            rightMotor.setPower(0.0);
+
         }
 
         @Override
@@ -31,17 +61,19 @@ public class DifTeleOp extends OpMode{
 
         @Override
         public void loop() {
-            double drive = -gamepad1.left_stick_y;
-            double turn = gamepad1.right_stick_x;
-            left.setPower(drive + turn);
-            right.setPower(drive - turn);
-            telemetry.update();
+            long startTime = System.currentTimeMillis();
+            wc.gateauDrive(gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
+
+            Position p = wc.getPosition();
+            telemetry.addData("x", p.x);
+            telemetry.addData("y", p.y);
+            telemetry.addData("h", p.heading);
+            telemetry.addData("deltaTime", System.currentTimeMillis() - startTime);
         }
 
         @Override
         public void stop() {
-            left.setPower(0);
-            right.setPower(0);
+            wc.stop();
         }
 
     }

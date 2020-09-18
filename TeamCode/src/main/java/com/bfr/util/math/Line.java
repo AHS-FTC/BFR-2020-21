@@ -13,6 +13,8 @@ public class Line {
     //ax + by = c, standard form
     public double a,b,c;
 
+    public static final Line xAxis = new Line(0, 1, 0);
+
     /**
      * Creates a nonfunctional line given two points.
      * </br>
@@ -106,6 +108,20 @@ public class Line {
         Line perp = getPerpLineAtPoint(p);
         Point intersection = findIntersection(perp); //the closest point is always orthogonal to the line.
         return intersection;
+    }
+
+    /**
+     * Finds the line equidistant between two points
+     */
+    public static Line findEquidistantLine(Point p1, Point p2){
+        Line lineBetween = new Line(p1, p2);
+
+        double avgX = (p1.x + p2.x) / 2.0;
+        double avgY = (p1.y + p2.y) / 2.0;
+
+        Point midPoint = new Point(avgX, avgY);
+
+        return lineBetween.getPerpLineAtPoint(midPoint);
     }
 
     /**

@@ -13,7 +13,6 @@ import com.bfr.util.FTCUtilities;
 public class OdometerImpl implements Odometer {
     private Motor motor;
     private double wheelCircumference;// in inches, used to be in mm
-    private int direction = 1; //enables canFlip. only 1 or -1. //*** IMPORTANT *** setDirection() method on DcMotor changes encoder direction
 
     /**
      * @param deviceName A string that ties the encoder sensor to the motor port of a DcMotor. Should be the same as whatever motor it's attached to.
@@ -24,9 +23,6 @@ public class OdometerImpl implements Odometer {
         motor = new Motor(deviceName, ticksPerRotation, flip);
         reset();
         wheelCircumference = wheelDiameter * Math.PI;
-        if(flip){
-            direction = -1;
-        }
     }
 
     /**
@@ -35,7 +31,7 @@ public class OdometerImpl implements Odometer {
     public double getDistance(){
         double rotations = motor.getRotations();
         double distance = rotations * wheelCircumference; // rotations / ticks per rotation but combined for optimization
-        return direction * distance;
+        return distance;
     }
 
     /**

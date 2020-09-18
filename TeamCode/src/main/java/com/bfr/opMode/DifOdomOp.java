@@ -24,7 +24,11 @@ public class DifOdomOp extends OpMode{
     public void init() {
         FTCUtilities.setOpMode(this);
 
-        odometry = new DifOdometry(left, right, Position.origin,16.75);
+        left = new OdometerImpl("l_odo",3.95 ,false, 1440.0);
+        right = new OdometerImpl("r_odo", 3.95, true, 1440.0);
+
+
+        odometry = new DifOdometry(left, right, Position.origin,16.16);
 
         logger = FtcDashboard.getInstance().getTelemetry();
     }
@@ -46,8 +50,8 @@ public class DifOdomOp extends OpMode{
         logger.addData("right wheel", right.getDistance());
 
         Position p = odometry.getPosition();
-        logger.addData("x", p.x);
-        logger.addData("y", p.y);
+//        logger.addData("x", p.x);
+//        logger.addData("y", p.y);
         logger.addData("h", p.heading);
         logger.update();
     }
